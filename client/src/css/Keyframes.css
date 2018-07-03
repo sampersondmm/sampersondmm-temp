@@ -1,0 +1,71 @@
+/* animation for the main image ========== */
+@keyframes fade-in-image {
+  100% {
+    opacity:1;
+  }
+}
+
+
+/* animation for the header ========= */
+@keyframes fade-in-header {
+  100% {
+    opacity:1;
+    transform:translateY(0px);
+  }
+}
+
+/* animation for the main text ============ */
+@keyframes text {
+  100% {
+    transform:translateY(0px);
+    opacity:1;
+  }
+}
+
+
+/* animation for the logo ============*/
+@keyframes allBox {
+  100% {
+    transform:translateY(0);
+  }
+}
+@keyframes one {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes two {
+  100% {
+    transform: rotate(315deg);
+  }
+}
+@keyframes three {
+  100% {
+    transform: rotate(270deg);
+  }
+}
+@keyframes four {
+  100% {
+    transform: rotate(225deg);
+  }
+}
+@keyframes five {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@keyframes six {
+  100% {
+    transform: rotate(135deg);
+  }
+}
+@keyframes seven {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes eight {
+  100% {
+    transform: rotate(45deg);
+  }
+}
