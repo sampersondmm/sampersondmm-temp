@@ -26,9 +26,13 @@ class Landing extends Component {
           </div>
         </div>
 
-        <Section title='Projects' color='rgb(100,100,100)'/>
-        <Section title='Education' color='rgb(200,200,200)'/>
-        <Section title='Blog' color='rgb(100,100,100)'/>
+        <Section
+          title='Projects'
+          backgroundColor='rgb(100,100,100)'
+        />
+
+        <Section title='Education' backgroundColor='rgb(200,200,200)' image=''/>
+        <Section title='Blog' backgroundColor='rgb(100,100,100)' image=''/>
 
         <div style={contact}>
           <div className='img'></div>
@@ -45,27 +49,103 @@ class Section extends Component {
   constructor(props){
     super(props);
   };
-  render(){
-    const color = {backgroundColor: this.props.color};
-    return(
-      <div style={Object.assign({}, section.main, color)}>
-        <h1 style={section.header}>{this.props.title}</h1>
-        <div style={section.sectionWrap}>
-          <div style={section.section}>
-            <div style={section.image}></div>
-            <p style={section.description}></p>
-          </div>
-          <div style={section.section}>
-            <div style={section.image}></div>
-            <p style={section.description}></p>
-          </div>
-          <div style={section.section}>
-            <div style={section.image}></div>
-            <p style={section.description}></p>
-          </div>
+  sortItems(style){
+    if(this.props.title === 'Projects'){
+      return (
+        <div style={style.wrap}>
+          <Item
+            section='projects'
+            image='cssArt.png'
+            header='Box Canvas'
+            text='A program that allows you to create art with css shapes using nothing but your keyboard'
+          />
+          <Item
+            section='projects'
+            image='cssArt.png'
+            header='Box Canvas'
+            text='A program that allows you to create art with css shapes using nothing but your keyboard'
+          />
         </div>
+      );
+    }
+  }
+  render(){
+    const style = {
+      main: {
+        width:'100%',
+        height:500,
+        backgroundColor:this.props.backgroundColor,
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-evenly',
+        alignItems:'center',
+      },
+      header: {
+        fontSize:'45px',
+      },
+      wrap: {
+        width:'85%',
+        height:'50%',
+        display:'flex',
+        justifyContent:'space-between',
+      }
+    }
+    return(
+      <div style={style.main}>
+        <h1 style={style.header}>{this.props.title}</h1>
+        {this.sortItems(style)}
         <NavLink exact to='/projects' style={button}>More</NavLink>
       </div>
+    );
+  }
+}
+
+class Item extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    const style = {
+      section: {
+        width:'30%',
+        height:'100%',
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+      },
+      header: {
+        fontSize:'23px',
+        marginBottom:'10px',
+        color:'black',
+      },
+      image: {
+        width:'100%',
+        border:'4px solid black',
+        borderRadius:'5px',
+        position:'relative',
+        zIndex:2,
+      },
+      text: {
+        color:'black',
+      },
+      description: {
+        marginTop:'-5px',
+        width:'110%',
+        backgroundColor:'rgb(220,220,220)',
+        padding:'15px',
+        borderRadius:'5px',
+      }
+    }
+    return(
+      <NavLink exact to={'/' + this.props.section} style={{textDecoration:'none'}}>
+        <div style={style.section}>
+          <img src={this.props.image} style={style.image}></img>
+          <div style={style.description}>
+            <h4 style={style.header}>{this.props.header}</h4>
+            <p style={style.text}>{this.props.text}</p>
+          </div>
+        </div>
+      </NavLink>
     );
   }
 }
@@ -134,7 +214,7 @@ const about = {
   },
   wrap: {
     height:'90%',
-    width:'80%',
+    width:'85%',
     display:'flex',
     justifyContent:'space-between',
     alignItems:'center',
@@ -176,33 +256,7 @@ const button = {
   border:'2px solid black',
 }
 
-const section = {
-  main: {
-    width:'100%',
-    height:500,
-    backgroundColor:'rgb(100,100,100)',
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'space-evenly',
-    alignItems:'center',
-  },
-  header: {
-    fontSize:'45px',
-  },
-  sectionWrap: {
-    width:'80%',
-    height:'50%',
-    display:'flex',
-    justifyContent:'space-between',
-  },
-  section: {
-    width:'30%',
-    height:'100%',
-    border:'4px solid black',
-    borderRadius:'5px',
-    backgroundColor:'rgb(200,200,250)',
-  }
-};
+
 
 
 
